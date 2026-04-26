@@ -4,7 +4,7 @@
     <link rel="icon" href="logo.ico" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <title>БЕЗДЫМНЫЙ АРХАНГЕЛЬСК</title>
+    <title>БЕЗДЫМНЫЙ АРХАНГЕЛЬСК.рф</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -26,7 +26,6 @@
             padding: 0 24px;
         }
 
-        /* ===== ШАПКА ===== */
         .site-header {
             background: #0a0a0a;
             border-bottom: 1px solid #2a2a2a;
@@ -79,7 +78,6 @@
             color: #ffffff;
         }
 
-        /* ===== БЛОК ЗАКАЗА (темный с акцентами) ===== */
         .order-block {
             background: #111111;
             border-radius: 28px;
@@ -87,7 +85,6 @@
             margin: 28px 0 24px;
             border: 1px solid #2c2c2c;
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
-            transition: all 0.2s;
         }
 
         .order-title {
@@ -165,7 +162,6 @@
             display: inline-block;
         }
 
-        /* ===== ПОИСК ===== */
         .search-section {
             margin: 20px 0 20px;
         }
@@ -222,7 +218,6 @@
             color: #b0b3b8;
         }
 
-        /* ===== ФИЛЬТРЫ ===== */
         .filter-group {
             margin: 16px 0 14px;
         }
@@ -272,7 +267,6 @@
             color: white;
         }
 
-        /* ===== СЕТКА ТОВАРОВ ===== */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -297,6 +291,24 @@
             box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.8);
             transform: translateY(-4px);
             background: #101010;
+        }
+
+        /* 18+ значок на карточке */
+        .age-badge-card {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(4px);
+            color: #f0b90b;
+            font-weight: 800;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            border: 1px solid #f0b90b;
+            z-index: 2;
+            font-family: monospace;
+            letter-spacing: 0.5px;
         }
 
         .product-image {
@@ -343,30 +355,6 @@
             border: 1px solid #2a2a2a;
         }
 
-        .details-line {
-            display: flex;
-            margin-bottom: 12px;
-            font-size: 12px;
-            gap: 8px;
-            flex-wrap: wrap;
-            align-items: flex-start;
-        }
-
-        .details-label {
-            min-width: 70px;
-            font-weight: 700;
-            color: #b0b7c4;
-            flex-shrink: 0;
-        }
-
-        .details-value {
-            flex: 1;
-            color: #dddddd;
-            word-break: break-word;
-            white-space: normal;
-            line-height: 1.4;
-        }
-
         .flavors-list {
             display: flex;
             flex-wrap: wrap;
@@ -385,7 +373,104 @@
             white-space: normal;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО (темная версия) ===== */
+        /* Модальное окно подтверждения возраста */
+        .agegate-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .agegate-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .agegate-card {
+            background: #0f0f0f;
+            border-radius: 48px;
+            max-width: 480px;
+            width: 88%;
+            padding: 40px 32px;
+            text-align: center;
+            border: 1px solid #f0b90b;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.8);
+            transform: scale(1);
+            transition: transform 0.3s;
+        }
+
+        .agegate-icon {
+            font-size: 70px;
+            color: #f0b90b;
+            margin-bottom: 20px;
+        }
+
+        .agegate-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .agegate-text {
+            font-size: 16px;
+            color: #b0b3b8;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .agegate-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .agegate-btn {
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: inherit;
+        }
+
+        .agegate-btn.yes {
+            background: #f0b90b;
+            color: #000000;
+            border: 1px solid #f0b90b;
+        }
+
+        .agegate-btn.yes:hover {
+            background: #ffcf40;
+            transform: scale(1.02);
+        }
+
+        .agegate-btn.no {
+            background: #1f1f1f;
+            color: #ffffff;
+            border: 1px solid #3a3a3a;
+        }
+
+        .agegate-btn.no:hover {
+            background: #2a2a2a;
+            border-color: #ff4444;
+            color: #ff8888;
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -539,23 +624,6 @@
             color: #efefef;
         }
 
-        @media (max-width: 580px) {
-            .modal-card {
-                padding: 20px 20px 24px;
-                width: 92%;
-            }
-            .modal-title {
-                font-size: 22px;
-            }
-            .modal-price {
-                font-size: 24px;
-            }
-            .modal-image {
-                max-width: 180px;
-            }
-        }
-
-        /* ===== FAQ ===== */
         .faq-section {
             margin: 40px 0 48px;
             background: #0b0b0b;
@@ -683,21 +751,34 @@
 </head>
 <body>
 
+<!-- Модальное окно подтверждения возраста 18+ -->
+<div id="ageGateOverlay" class="agegate-overlay">
+    <div class="agegate-card">
+        <div class="agegate-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="agegate-title">18+</div>
+        <div class="agegate-text">Данный сайт содержит информацию о товарах, предназначенных только для совершеннолетних лиц.<br><br>Подтвердите, что вам есть 18 лет.</div>
+        <div class="agegate-buttons">
+            <button id="ageConfirmYes" class="agegate-btn yes">Да, мне есть 18</button>
+            <button id="ageConfirmNo" class="agegate-btn no">Нет, мне нет 18</button>
+        </div>
+    </div>
+</div>
+
 <header class="site-header">
     <div class="container header-inner">
         <div class="logo-area">
             <img class="site-logo-img" src="logo.png" alt="Бездымный Северодвинск" width="120" height="120">
-            <span class="logo-text">БЕЗДЫМНЫЙ АРХАНГЕЛЬСК </span>
+            <span class="logo-text">БЕЗДЫМНЫЙ АРХАНГЕЛЬСК</span>
         </div>
     </div>
 </header>
 
-<main class="container">
+<main class="container" id="mainContent">
     <div class="order-block">
         <div class="order-title"><i class="fas fa-shopping-cart"></i> Как заказать?</div>
         <div class="order-sub">Выбирайте товары, свяжитесь с нами любым удобным способом — и мы всё оформим</div>
         <div class="order-buttons">
-            <a href="tel:+79027004731ы" class="order-btn phone"><i class="fas fa-phone-alt"></i> 8 902 700-47-31</a>
+            <a href="tel:+79027004731" class="order-btn phone"><i class="fas fa-phone-alt"></i> 8 902 700-47-31</a>
             <a href="https://t.me/bezdymnyi29" target="_blank" class="order-btn tg"><i class="fab fa-telegram-plane"></i> Telegram: @bezdymnyi29</a>
             <a href="https://vk.ru/id1110745797" target="_blank" class="order-btn vk"><i class="fab fa-vk"></i> ВКонтакте</a>
         </div>
@@ -717,7 +798,7 @@
         <div class="filter-title"><i class="fas fa-tag"></i> Категории</div>
         <div class="chips-row" id="categoryChips">
             <div class="filter-chip" data-category-filter="снюс"><i class="fas fa-box"></i> Снюс (Жевательный табак)</div>
-            <div class="filter-chip" data-category-filter="Никотиновые плистинки"><i class="fas fa-tablets"></i> Никотиновые плистинки</div>
+            <div class="filter-chip" data-category-filter="Никотиновые плистинки"><i class="fas fa-tablets"></i> Никотиновые пластинки</div>
             <div class="filter-chip" data-category-filter="электронные испарители"><i class="fas fa-wind"></i> Электронные испарители</div>
             <div class="filter-chip" data-category-filter="Никотиновые жидкости"><i class="fas fa-tint"></i> Никотиновые жидкости</div>
         </div>
@@ -737,13 +818,13 @@
     <div class="faq-section">
         <div class="faq-title"><i class="fas fa-question-circle"></i> Частые вопросы</div>
         <div class="faq-item"><div class="faq-question">Нужно ли оплачивать заказ заранее?<i class="fas fa-chevron-down"></i></div><div class="faq-answer">Нет! Вы ничего не оплачиваете вперед. Заказываете через любой удобный мессенджер, оплата при получении.</div></div>
-        <div class="faq-item"><div class="faq-question">Как оформить заказ?<i class="fas fa-chevron-down"></i></div><div class="faq-answer">Выберите товары, свяжитесь по телефону 8 964 299-93-32, в Telegram @bezdymnyi_zakaz или ВКонтакте. Назовите позиции — мы подтвердим наличие.</div></div>
-        <div class="faq-item"><div class="faq-question">Есть ли доставка по Северодвинску?<i class="fas fa-chevron-down"></i></div><div class="faq-answer">Да, работаем по городу. Уточняйте детали при заказе — возможна встреча или курьерская доставка.</div></div>
-        <div class="faq-item"><div class="faq-question">Можно ли забрать товар самовывозом?<i class="fas fa-chevron-down"></i></div><div class="faq-answer">Конечно! Согласуем удобное время и точку встречи в Северодвинске.</div></div>
+        <div class="faq-item"><div class="faq-question">Как оформить заказ?<i class="fas fa-chevron-down"></i></div><div class="faq-answer">Выберите товары, свяжитесь по телефону 8 902 700-47-31, в Telegram @bezdymnyi29 или ВКонтакте. Назовите позиции — мы подтвердим наличие.</div></div>
+        <div class="faq-item"><div class="faq-question">Есть ли доставка по Архангельску?<i class="fas fa-chevron-down"></i></div><div class="faq-answer">Да. Уточняйте детали при заказе — возможна встреча или курьерская доставка.</div></div>
+        <div class="faq-item"><div class="faq-question">Можно ли забрать товар самовывозом?<i class="fas fa-chevron-down"></i></div><div class="faq-answer">Конечно! Согласуем удобное время и точку встречи в Архангельске.</div></div>
         <div class="faq-item"><div class="faq-question">Как узнать актуальный ассортимент?<i class="fas fa-chevron-down"></i></div><div class="faq-answer">На сайте основные позиции. Полный список и новинки уточняйте в мессенджерах — менеджер подскажет наличие.</div></div>
     </div>
 
-    <div class="footer-note"><i class="fas fa-store"></i> Бездымный Северодвинск · Только для совершеннолетних 18+ · Заказ без предоплаты</div>
+    <div class="footer-note"><i class="fas fa-store"></i> Бездымный Архангельск · Только для совершеннолетних 18+ · Заказ без предоплаты</div>
 </main>
 
 <div id="productModal" class="modal-overlay">
@@ -764,9 +845,8 @@
 
 <script>
     (function(){
-        // ---------------------- ПОЛНЫЙ СПИСОК ТОВАРОВ ИЗ ФАЙЛА (ассортимент.xlsx) -------------------------
+        // ПОЛНЫЙ АССОРТИМЕНТ (те же данные что и ранее)
         const productsData = [
-            // Снюс (из начала)
             { id: 1, title: "ARQA", brand: "ARQA", category: "снюс", price: "500 ₽", strength: "70 мг", flavors: ["Кола 🥤","Энергетик 🥤","Манго/Клубника","Бабл Гам","Банановый крем","Молоко с ягодами","Нектарин/Банан","Холодные ягоды","Малина/Виноград","Клубника/Вишня","Клубничная Жвачка","Мята","Манго/Персик","Вишнёвый коктейль"], description: "кол-во пакетиков : 20 шт. При покупке от 2 шт 450р", image: "ARQA.jpg" },
             { id: 2, title: "NICTECH", brand: "NICTECH", category: "снюс", price: "500 ₽", strength: "60 мг", flavors: ["Энергетик","Зелёное яблоко","Клубника","Дыня","Кола","Кокос","Чизкейк","Манго","Виноград","Бергамот","Апельсин"], description: "кол-во пакетиков : 20 шт. При покупке от 2 шт 450р", image: "NICTECH.jpg" },
             { id: 3, title: "NICTECH V2", brand: "NICTECH", category: "снюс", price: "500 ₽", strength: "105 мг", flavors: ["Дюшес","Тротил"], description: "кол-во пакетиков : 20 шт. При покупке от 2 шт 450р", image: "NICTECHV2.jpg" },
@@ -775,7 +855,7 @@
             { id: 6, title: "Oden's Cold Dry", brand: "Oden's", category: "снюс", price: "700 ₽", strength: "22 мг", flavors: ["cold dry"], description: "21 шт. При покупке от 2 шт 650р", image: "Odens.jpg" },
             { id: 7, title: "SIBERIA RED", brand: "SIBERIA", category: "снюс", price: "700 ₽", strength: "45 мг", flavors: ["white dry"], description: "17 шт. При покупке от 2 шт 650р", image: "SIBERIA_RED.jpg" },
             { id: 8, title: "ARQA Tobacco series", brand: "ARQA", category: "снюс", price: "500 ₽", strength: "70 мг", flavors: ["Табак","Вишня/Табак","Лимон/Табак"], description: "20 шт. При покупке от 2 шт 450р", image: "ARQATobaco.jpg" },
-            { id: 9, title: "FAFF (снюс)", brand: "FAFF", category: "снюс", price: "500 ₽", strength: "150 мг", flavors: ["WAFFLES","MULBERRY","ENERGY COLA","PINK LEMONADE","PEACH ТЕА","GUMMY BEARS","ORANGE SODA","TOP GUM","FRUIT-TELLA","CACTUS","COCOBERRY","RED MOJITO","TEQUILA SUNRISE","CHERRY COLA","TOP MINT","BEE QUEEN"], description: "20-25 шт. При покупке от 2 шт 450р", image: "FAFF.jpg" },
+            { id: 9, title: "FAFF", brand: "FAFF", category: "снюс", price: "500 ₽", strength: "150 мг", flavors: ["WAFFLES","MULBERRY","ENERGY COLA","PINK LEMONADE","PEACH ТЕА","GUMMY BEARS","ORANGE SODA","TOP GUM","FRUIT-TELLA","CACTUS","COCOBERRY","RED MOJITO","TEQUILA SUNRISE","CHERRY COLA","TOP MINT","BEE QUEEN"], description: "20-25 шт. При покупке от 2 шт 450р", image: "FAFF.jpg" },
             { id: 10, title: "KASTA PHOBIA", brand: "KASTA", category: "снюс", price: "500 ₽", strength: "125 мг", flavors: ["Лимон","Яблоко","Тропик","Цитрон","Апельсиновая конфета"], description: "20 шт. При покупке от 2 шт 450р", image: "KASTAPH.jpg" },
             { id: 11, title: "WOLF", brand: "WOLF", category: "снюс", price: "500 ₽", strength: "100 мг", flavors: ["Ментол","Перечная мята","Двойная мята","Виноград/перечная мята"], description: "20 шт.  При покупке от 2 шт 450р", image: "WOLF.jpg" },
             { id: 15, title: "NICTECH extremely strong", brand: "NICTECH", category: "снюс", price: "500 ₽", strength: "40 мг", flavors: ["extremely strong"], description: "20 шт.  При покупке от 2 шт 450р", image: "NICTECH extremely strong.jpg" },
@@ -788,12 +868,13 @@
             { id: 22, title: "BJORN ZLOY MINT DROP", brand: "BJORN", category: "снюс", price: "500 ₽", strength: "14.3 мг", flavors: ["MINT"], description: "21 шт.  При покупке от 2 шт 450р", image: "BJORN ZLOY MINT.jpg" },
             { id: 23, title: "BJORN ZLOY 158 мг", brand: "BJORN", category: "снюс", price: "500 ₽", strength: "158 мг", flavors: ["Освежающая мята","Манговый пунш","Вишневая бомба","Ледяной удар","Апельсиновый сок","Энергетик","Морозный шок","Виноградный хайп"], description: "21 шт.  При покупке от 2 шт 450р", image: "BJORN ZLOY.jpg" },
             { id: 24, title: "SIBERIA RED SLIM 13 гр", brand: "SIBERIA", category: "снюс", price: "700 ₽", strength: "44 мг", flavors: ["White dry"], description: "21 шт.  При покупке от 2 шт 650р", image: "SIBERIA RED SLIM.jpg" },
-            // Никотиновые пластинки
+            { id: 101, title: "DRYMOST \"HARD\"", brand: "DRYMOST", category: "снюс", price: "500 ₽", strength: "150 мг", flavors: ["Грейпфрут / Лимонад","Мята","Малина / Клубника","Яблоко","Кола / Виноград"], description: "кол-во пакетиков : 20 шт. От 2 шт - 450₽", image: "DRYMOST_HARD.jpg" },
+            { id: 102, title: "FAFF PZDC", brand: "FAFF", category: "снюс", price: "500 ₽", strength: "150 мг", flavors: ["Мятная вишня","Двойной ментол","Грейпфрут черника","Кислые мармеладные мишки","Мандарин"], description: "кол-во пакетиков : 20 шт. От 2 шт - 450₽", image: "FAFF_PZDC.jpg" },
+            { id: 103, title: "MAD", brand: "MAD", category: "снюс", price: "500 ₽", strength: "200 мг", flavors: ["Клубника черника арбуз","Кола","Клубника","Доктор Пеппер","Тропик","Голубая малина","Яблоко","Виноград","Хубба Бубба","Таинственный вкус"], description: "кол-во пакетиков : 20 шт. От 2 шт - 450₽", image: "MAD.jpg" },
             { id: 12, title: "Никотиновые пластинки KASTA", brand: "KASTA", category: "Никотиновые плистинки", price: "550 ₽", strength: "strong", flavors: ["Сливочно Клубничный","Психоз из Абсента","Штамм Бабл-Гам","Хворь из Лесных ягод","Яблочный сок","Малиновая самоизоляция","Локдаун Манго-Личи","Ванильный Диагноз с Колой","Грейпфрутовая вакцинация","Озноб Виноградный"], description: "65 шт.  При покупке от 2 шт 500р", image: "PlasKASTA.jpg" },
             { id: 13, title: "Никотиновые пластинки MAD", brand: "MAD", category: "Никотиновые плистинки", price: "500 ₽", strength: "strong", flavors: ["Мята","Вишня/Мята","Баунти","Ягоды","Смородина/Мята","Ментол","Яблоко","Виноградный сок","Энергетик","Персик"], description: "65 шт.  При покупке от 2 шт 450", image: "PlaMAD.jpg" },
             { id: 14, title: "Никотиновые пластинки FAFF", brand: "FAFF", category: "Никотиновые плистинки", price: "500 ₽", strength: "strong", flavors: ["Мята","Черная смородина","Фанта","Кола","Мармеладные мишки","Виноград Изабелла","Малина","Баблгам","Энергетик","Тропический микс"], description: "60 шт.  При покупке от 2 шт 450р", image: "PlaFAFF.jpg" },
             { id: 25, title: "BJORN & LOOP Пластинки", brand: "BJORN & LOOP", category: "Никотиновые плистинки", price: "500 ₽", strength: "strong", flavors: ["Вишня","Гуарана","Киви клубника","Дикая черника","Энергетик","Ягоды","Груша","Сибирская мята","Вишневая кола"], description: "55 шт. При покупке от 2 шт 450р", image: "BJORN & LOOP.jpg" },
-            // Электронные испарители (все из таблицы)
             { id: 29, title: "LOST MARY BM 16 000", brand: "LOST MARY", category: "электронные испарители", price: "1600 ₽", strength: "2%", flavors: ["Голубика малина лед","Ледяной арбуз","Киви ананас персик","Кислое яблоко","Виноградный лед","Виноград клюква","Клубника банан","Вишня лайм","Ежевика вишня","Клубника киви","Перечная мята"], description: "16000 тяг.  При покупке от 2 шт 1550р", image: "lostMary.jpg" },
             { id: 30, title: "BJORN BAR PLUS", brand: "BJORN", category: "электронные испарители", price: "1300 ₽", strength: "2%", flavors: ["Малиново-апельсиновый","Виноград смородина","Ледяная вишня","Ледяная дыня","Клубника черника","Черника малина","Смузи смородины","Ледяная черника","Клубника арбуз киви","Ледяной арбуз","Вишня яблоко","Жвачка киви","Клубника банан","Банан вишня","Маракуйя апельсин","Виноградная мята","Ледяная кола","Ледяной виноград","Малина черника"], description: "8000 тяг, подзарядка.  При покупке от 2 шт 1250р", image: "BJORN BAR PLUS.jpg" },
             { id: 31, title: "LOST MARY OS 25 000", brand: "LOST MARY", category: "электронные испарители", price: "1900 ₽", strength: "2%", flavors: ["Кислая ежевика","Гранатовый сок","Ледяной виноград","Клубника арбуз","Перечная мята","Яблоко персик виноград","Кислое яблоко","Кислая малина","Грушевый лимонад","Ледяной арбуз","Лимон лайм","Клубника киви","Кислый виноград","Вишня лимон","Черника малина","Вишня малина"], description: "25000 тяг, 3 режима.  При покупке от 2 шт 1850р", image: "LOSTMARYOS.jpg" },
@@ -801,24 +882,14 @@
             { id: 36, title: "BJORN X 50 000", brand: "BJORN", category: "электронные испарители", price: "2000 ₽", strength: "2%", flavors: ["Кислая смородина","Голубая малина","Ледяная клубника","Ананас вишня","Фруктовый микс","Клубника банан","Лесная черника","Манго банан","Лайм дыня","Клубника киви","Ледяной арбуз","Ягодный ред булл","Кокосовый коктейль","Вишневая кола","Освежающая мята","Виноградный микс","Ледяной ананас","Лимонный закат","Малайзийское манго","Кислое яблоко"], description: "50000 тяг, дисплей. При покупке от 2 шт 1900р", image: "BJORN X.jpg" },
             { id: 37, title: "BJORN TRON 55 000", brand: "BJORN", category: "электронные испарители", price: "1800 ₽", strength: "2%", flavors: ["Виноград клубника","Ананас киви","Классическая кола","Черника яблоко","Вишневая кола","Малиновая газировка","Лесные ягоды со льдом","Яблоко со льдом","Клубника лайм","Клубника банан","Яблоко вишня","Чистый ментол","Клюква со льдом","Клюква энергетик","Смородина виноград","Вишня клюква","Вишня со льдом","Грейпфрут малина","Малина виноград","Черника малина"], description: "55000 тяг.  При покупке от 2 шт 1700р", image: "BJORN TRON.jpg" },
             { id: 38, title: "BJORN TESLA BAR 65 000", brand: "BJORN", category: "электронные испарители", price: "2200 ₽", strength: "2%", flavors: ["Острый манго","Манго ананас маракуйя","Легкий бриз личи","Голубика со льдом","Арбуз с ментолом","Ананас киви персик","Освежающая кола","Кактус лайм","Бархатный микс ягод","Японская вишня","Фруктово-ягодный микс","Небулярный виноград","Экзотическая вишня","Яблоко дыня маракуйя","Драконий фрукт"], description: "65000 тяг, дисплей.  При покупке от 2 шт 2100р", image: "BJORN TESLA BAR.jpg" },
-            // НИКОТИНОВЫЕ ЖИДКОСТИ (добавляем все из таблицы с 44 по 56)
-            { id: 44, title: "RICK AND MORTY", brand: "RICK AND MORTY", category: "Никотиновые жидкости", price: "400 ₽", strength: "2%", flavors: ["Pinkman","Blood","Top berry pie","Black razz","Currant","Gummy bear","Frutberry","Melon Lounge","Cranbeery mix","Tropical tea"], description: "Объём 30 мл", image: "RICK AND MORTY.jpg" },
-            { id: 45, title: "HUSKY PREMIUM", brand: "HUSKY", category: "Никотиновые жидкости", price: "450 ₽", strength: "2%", flavors: ["YELLOW KING","DARK FLESH","MIAMI SNOW","BLOOD BOY","BIG BALL","ANIMAL JAM","YOGI DOGGY","NEWCHOKO LOKO","NEWSWEET DREAM","NEWTASTY SPLASH","NEWTROPIC CREAM","NEWSPARK DAY"], description: "30 мл", image: "HUSKY PREMIUM.jpg" },
-            { id: 46, title: "HUSKY DOUBLE ICE", brand: "HUSKY", category: "Никотиновые жидкости", price: "450 ₽", strength: "2%", flavors: ["Siberian black","North sweet","Winter river","Frosty palm","Artic strike","Chilly kiwi","Explosive bait","Tropic dew"], description: "30 мл", image: "HUSKY DOUBLE ICE.jpg" },
-            { id: 47, title: "HUSKY MINT SERIES", brand: "HUSKY", category: "Никотиновые жидкости", price: "450 ₽", strength: "2%", flavors: ["Berry hunter","Red garden","Citrus days","Blue up","Juice grapes","Water place","Sakura forest","Sweet buckshot"], description: "30 мл", image: "HUSKY MINT SERIES.jpg" },
-            { id: 48, title: "BOSHKI", brand: "BOSHKI", category: "Никотиновые жидкости", price: "450 ₽", strength: "2%", flavors: ["Добрые","Добрые ON ICE","Exotic","Зимние","Кубанские","Бодрые","Original","Садовые","Сахарные","Целебные","Чёрные","Neon","Злые"], description: "30 мл", image: "BOSHKI.jpg" },
-            { id: 49, title: "ULTRA SALT", brand: "Ultra", category: "Никотиновые жидкости", price: "400 ₽", strength: "2%", flavors: ["Виноградная конфета","Табак с вишней","Холодный апельсиновый сок","Чёрная смородина и Ежевика","Чупа-Чупс/Кола/Ягоды","Энергетик со льдом","Спелый банан"], description: "30 мл", image: "UltraSolt.jpg" },
-            { id: 50, title: "HOTSPOT ACID", brand: "HOTSPOT", category: "Никотиновые жидкости", price: "450 ₽", strength: "2%", flavors: ["Кислое киви","Кислое яблоко","Кислый ананас","Кислая маракуйя"], description: "30 мл", image: "HOTSPOTAcsid.jpg" },
-            { id: 51, title: "HOTSPOT FUEL", brand: "HOTSPOT", category: "Никотиновые жидкости", price: "450 ₽", strength: "2%", flavors: ["Дыня/Черника","Киви/Банан","Смородина/Мята","Манго/Грейпфрут","Кислые лесные ягоды","Ананас/Ежевика"], description: "30 мл", image: "HOTSPOTFUEL.jpg" },
-            { id: 52, title: "HOTSPOT DON’T CHEW IT", brand: "HOTSPOT", category: "Никотиновые жидкости", price: "450 ₽", strength: "2%", flavors: ["Жвачка/Маракуйя","Жвачка/Виноград","Жвачка/Вишня","Жвачка/Яблоко","Жвачка/Арбуз","Жвачка/Сочный персик"], description: "30 мл", image: "HOTSPOTDONT.jpg" },
-            { id: 53, title: "CRUX", brand: "CRUX", category: "Никотиновые жидкости", price: "350 ₽", strength: "2%", flavors: ["Банановый крем","Клубничный джем","Виноградный лимонад","Клубника/Киви","Вишнёвый пунш","Арбузная Жвачка","Дыня/Гуава","Личи/Грейпфрут","Персик/Малина","Кола/Энергетик"], description: "30 мл", image: "CRUX.jpg" },
-            { id: 54, title: "TOYZ", brand: "TOYZ", category: "Никотиновые жидкости", price: "450 ₽", strength: "2%", flavors: ["Вишневая кола","Ананас/Дыня/Манго","Мятный арбуз","Черничный энергетик","Мохито","Голубика","Ягодный морс","Вишня со льдом","Сумасшедшая малина","Клубничный джем","Малина ежевика","Апельсин/Лимон/Мята","Манго со льдом","Дыня со льдом","Ананас со льдом","Киви со льдом","Апельсин со льдом","Лесные ягоды с мятой","Клубника киви"], description: "30 мл", image: "TOYZ.jpg" },
-            { id: 55, title: "PODONKI V1", brand: "PODONKI", category: "Никотиновые жидкости", price: "450 ₽", strength: "5%", flavors: ["Ледяной арбуз","Малина вишня","Микс из ледяных ягод","Ледяная кола","Холодная голубая малина","Бабл гам абрикос","Яблоко вишня","Брусника клюква малина","Вишня лайм лед","Двойное яблоко лед","Малина клубника жвачка","Тропические лед","Личи виноград мята","Малиновый лимонад","Клубника банан лед","Лимонад из черной смородины"], description: "30 мл", image: "PODONKI1.jpg" },
-            { id: 56, title: "PODONKI V2", brand: "PODONKI", category: "Никотиновые жидкости", price: "450 ₽", strength: "5%", flavors: ["Кактус виноград жвачка","Арбузное мороженое","Ананасовый энергетик","Клубничное мороженое","Киви лайм тархун","Холлс из черной смородины","Клубничное шампанское","Банановое молоко"], description: "30 мл", image: "PODONKI2.jpg" },
-            { id: 57, title: "XYLINET", brand: "XYLINET", category: "Никотиновые жидкости", price: "450 ₽", strength: "69 mg", flavors: ["Ananasovyi kamshot","Kaktusovyui kaning","Tropicheskiy skvirt","Persikovyi kuni","Myatnaya irrymatsiya","Yagodnyi gang bang","Yablochnoye proniknovenie","Vinogradnyi orgazm","Mangovyi frottaj","Klybnichnyi minet","Kislo-sladkiy felching","Ezhevichnyi bdsm","Energichnyi sving","Kink kiwi","Malinovyi fisting"], description: "30 мл", image: "XYLINET.jpg" }
+            { id: 44, title: "RICK AND MORTY", brand: "RICK AND MORTY", category: "Никотиновые жидкости", price: "400 ₽", strength: "2%", flavors: ["Pinkman","Blood","Top berry pie","Black razz","Currant","Gummy bear","Frutberry","Melon Lounge","Cranbeery mix","Tropical tea"], description: "Объём 30 мл. От 1 шт - 400₽, от 2 шт - 350₽", image: "RICK AND MORTY.jpg" },
+            { id: 45, title: "HUSKY PREMIUM", brand: "HUSKY", category: "Никотиновые жидкости", price: "450 ₽", strength: "2% strong", flavors: ["YELLOW KING","DARK FLESH","MIAMI SNOW","BLOOD BOY","BIG BALL","ANIMAL JAM","YOGI DOGGY","CHOKO LOCO","SWEET DREAM","TASTY SPLASH","TROPIC CREAM","SPARK DAY"], description: "Объём 30 мл. От 1 шт - 500₽, от 2 шт - 450₽", image: "HUSKY_PREMIUM.jpg" },
+            { id: 46, title: "BJORN BRO", brand: "BJORN", category: "Никотиновые жидкости", price: "300 ₽", strength: "2% strong", flavors: ["Тропические фрукты","Банановое молоко","Виноградная газировка","Яблоко/Манго/Персик","Арбуз со льдом","Клубника/Личи/Киви","Ананас/Кислое яблоко","Манго/Энергетик","Клубника/Киви/Гранат"], description: "Объём 30 мл. От 1 шт - 300₽, от 2 шт - 250₽", image: "BJORN_BRO.jpg" },
+            { id: 47, title: "BJORN PREMIUM", brand: "BJORN", category: "Никотиновые жидкости", price: "350 ₽", strength: "2% strong", flavors: ["Ледяная клубника","Ледяная черника","Манго/Банан","Гранат/Виноград","Ледяной Ананас/Кокос","Ледяной грейпфрут","Маракуйя/Апельсин","Лимон/Мята","Личи/Дыня","Ледяная Гуава"], description: "Объём 30 мл. От 1 шт - 350₽, от 2 шт - 300₽", image: "BJORN_PREMIUM.jpg" },
+            { id: 48, title: "BOSHKI", brand: "BOSHKI", category: "Никотиновые жидкости", price: "450 ₽", strength: "2% strong", flavors: ["Добрые – щербет из ягод с сахаром и хвоей","Добрые ON ICE – сладкий ягодный напиток с хвоей","Exotic – манго, дыня, хвоя","Зимние – дольки ананаса с хвоей","Кубанские - ягоды/хвоя","Бодрые - Хвойный энергетик","Original - Еловые шишки","Садовые - клубника/хвоя","Сахарные - варенье из малины и хвоя","Целебные - чай с хвоей","Чёрные - Кока кола/Хвоя","Neon - Арбуз/Ежевика/Хвоя","Злые - Лайм/Мохито/Хвоя"], description: "Объём 30 мл. От 1 шт - 450₽, от 2 шт - 400₽", image: "BOSHKI.jpg" },
+            { id: 49, title: "BJORN — ZLOY", brand: "BJORN", category: "Никотиновые жидкости", price: "350 ₽", strength: "2% strong", flavors: ["Смородина черника лимонад","Клубника банан","Виноград алое","Кола","Персик маракуйя","Кислая маракуйя с лимоном и личи","Виноград вишня","Дыня ананас","Манго личи персик","Апельсин","Лесные ягоды","Вишня"], description: "Объём 30 мл. От 1 шт - 350₽, от 2 шт - 300₽", image: "ZLOY.jpg" }
         ];
 
-        // динамическое заполнение брендов
         const brandChipsContainer = document.getElementById('brandChips');
         const uniqueBrands = [...new Set(productsData.map(p => p.brand))].sort();
         uniqueBrands.forEach(b => {
@@ -834,6 +905,25 @@
         const searchBtn = document.getElementById('searchButton');
         const searchStatus = document.getElementById('searchStatus');
         let activeFilter = { search: '', category: '', brand: '' };
+        let ageVerified = false;
+
+        // 18+ логика
+        const ageGate = document.getElementById('ageGateOverlay');
+        const confirmYes = document.getElementById('ageConfirmYes');
+        const confirmNo = document.getElementById('ageConfirmNo');
+
+        function showAgeGate() { ageGate.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function hideAgeGate() { ageGate.classList.add('hidden'); document.body.style.overflow = ''; }
+
+        confirmYes.addEventListener('click', () => {
+            ageVerified = true;
+            hideAgeGate();
+            renderProducts(); // отрисовываем товары
+        });
+        confirmNo.addEventListener('click', () => {
+            // уходим с сайта-заглушка
+            document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#000;color:#fff;text-align:center;padding:20px;"><div><i class="fas fa-ban" style="font-size:64px;color:#f0b90b;margin-bottom:20px;"></i><h1>Доступ запрещён</h1><p>Данный сайт содержит информацию только для лиц старше 18 лет.</p></div></div>';
+        });
 
         const modal = document.getElementById('productModal');
         const modalClose = document.getElementById('modalCloseBtn');
@@ -847,6 +937,7 @@
         const modalDescription = document.getElementById('modalDescription');
 
         function openModal(product) {
+            if (!ageVerified) return;
             modalImage.src = product.image;
             modalImage.alt = product.title;
             modalTitle.textContent = product.title;
@@ -884,6 +975,11 @@
         }
 
         function renderProducts() {
+            if (!ageVerified) {
+                container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:60px 20px;"><i class="fas fa-lock" style="font-size:64px; color:#f0b90b;"></i><p style="margin-top:20px; font-size:18px;">Контент скрыт. Подтвердите возраст 18+</p></div>`;
+                searchStatus.innerText = `⛔ Подтвердите возраст для просмотра товаров`;
+                return;
+            }
             const filtered = productsData.filter(p => {
                 const searchLower = activeFilter.search;
                 const searchMatch = !searchLower || p.title.toLowerCase().includes(searchLower) || p.brand.toLowerCase().includes(searchLower) || (p.flavors && p.flavors.some(f => f.toLowerCase().includes(searchLower))) || (p.description && p.description.toLowerCase().includes(searchLower));
@@ -900,6 +996,7 @@
             filtered.forEach(p => {
                 const flavorsHtml = (p.flavors && p.flavors.length) ? p.flavors.slice(0, 8).map(f => `<span class="flavor-tag">${escapeHtml(f)}</span>`).join('') : '<span class="flavor-tag">—</span>';
                 html += `<div class="product-card" data-product='${JSON.stringify(p).replace(/'/g, "&#39;")}'>
+                    <div class="age-badge-card"><i class="fas fa-exclamation-circle"></i> 18+</div>
                     <img class="product-image" src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" loading="lazy" onerror="this.src='https://placehold.co/400x400/222222/f0b90b?text=Фото'">
                     <div class="product-title">${escapeHtml(p.title)}</div>
                     <div class="product-brand">${escapeHtml(p.brand)}</div>
@@ -919,12 +1016,13 @@
             });
         }
 
-        searchBtn.addEventListener('click', () => { activeFilter.search = searchInput.value.trim().toLowerCase(); renderProducts(); });
-        searchInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') { activeFilter.search = searchInput.value.trim().toLowerCase(); renderProducts(); } });
+        searchBtn.addEventListener('click', () => { if(ageVerified){ activeFilter.search = searchInput.value.trim().toLowerCase(); renderProducts(); } });
+        searchInput.addEventListener('keypress', (e) => { if(e.key === 'Enter' && ageVerified) { activeFilter.search = searchInput.value.trim().toLowerCase(); renderProducts(); } });
 
         const categoryChips = document.querySelectorAll('[data-category-filter]');
         const setActiveCategory = (val) => categoryChips.forEach(ch => ch.classList.toggle('active', ch.dataset.categoryFilter === val && val !== ''));
         categoryChips.forEach(ch => ch.addEventListener('click', () => {
+            if(!ageVerified) return;
             const cat = ch.dataset.categoryFilter;
             if (activeFilter.category === cat) activeFilter.category = '';
             else activeFilter.category = cat;
@@ -935,6 +1033,7 @@
         const brandChips = document.querySelectorAll('[data-brand-filter]');
         const setActiveBrand = (val) => brandChips.forEach(ch => ch.classList.toggle('active', ch.dataset.brandFilter === val && val !== ''));
         brandChips.forEach(ch => ch.addEventListener('click', () => {
+            if(!ageVerified) return;
             const br = ch.dataset.brandFilter;
             if (activeFilter.brand === br) activeFilter.brand = '';
             else activeFilter.brand = br;
@@ -943,6 +1042,7 @@
         }));
 
         document.getElementById('globalResetBtn').addEventListener('click', () => {
+            if(!ageVerified) return;
             searchInput.value = '';
             activeFilter = { search: '', category: '', brand: '' };
             setActiveCategory('');
@@ -950,7 +1050,11 @@
             renderProducts();
         });
         document.querySelectorAll('.faq-item').forEach(item => item.querySelector('.faq-question')?.addEventListener('click', () => item.classList.toggle('active')));
-        renderProducts();
+        
+        // Начальное состояние: показываем гейт, контент скрыт
+        ageVerified = false;
+        showAgeGate();
+        renderProducts(); // будет заглушка
     })();
 </script>
 </body>
